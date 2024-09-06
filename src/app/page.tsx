@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { Card } from '@/components/Card';
+import AIToolCard from '@/components/Card';
 import data from '@/data/data.json';
 
 
@@ -22,9 +22,14 @@ export default function Home() {
     <main className="container mx-auto py-8">
       <h1 className="text-3xl font-bold mb-8 text-center">AI Tool Finder</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {data.map((tool) => (
-          <Card key={tool.id} {...tool} />
-        ))}
+      {data.map((tool) => (
+  <AIToolCard
+    key={tool.id}
+    title={tool.name}
+    description={tool.description}
+    rating={tool.rating}
+  />
+))}
       </div>
     </main>
     </Layout>
