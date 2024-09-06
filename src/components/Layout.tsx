@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { HomeIcon, MenuIcon, MountainIcon, SearchIcon } from "lucide-react";
 // Import all your icon components here
+import { BotIcon } from "lucide-react"
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -22,8 +23,8 @@ export default function Layout({ children }) {
           className="flex items-center gap-2 font-heading text-lg font-bold text-primary-foreground dark:text-card-foreground"
           onClick={(e) => handleNavigation(e, "/")}
         >
-          <MountainIcon className="w-6 h-6" />
-          <span>AI Tool Finder</span>
+          <BotIcon className="w-6 h-6" />
+          <span>Here is an ai for that</span>
         </Link>
         <Button variant="ghost" size="icon" className="sm:hidden text-primary-foreground dark:text-card-foreground">
           <MenuIcon className="w-6 h-6" />
@@ -51,4 +52,24 @@ export default function Layout({ children }) {
       </footer>
     </div>
   );
+}
+
+
+function StarIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+  )
 }

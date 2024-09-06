@@ -21,7 +21,7 @@ import { NextPage } from "next"
 import useRouter from "next/router"
 import { Link, Button } from "@/components"
 import { Button } from "@/components/ui/button"
-
+import { BotIcon } from "lucide-react"
 export function Component() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-body dark:bg-muted dark:text-card-foreground">
@@ -31,8 +31,8 @@ export function Component() {
           className="flex items-center gap-2 font-heading text-lg font-bold text-primary-foreground dark:text-card-foreground"
           prefetch={false}
         >
-          <MountainIcon className="w-6 h-6" />
-          <span>AI Tool Finder</span>
+          <BotIcon className="w-6 h-6" />
+          <span>Here is an ai for that</span>
         </Link>
         <Button variant="ghost" size="icon" className="sm:hidden text-primary-foreground dark:text-card-foreground">
           <MenuIcon className="w-6 h-6" />
