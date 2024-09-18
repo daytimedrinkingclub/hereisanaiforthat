@@ -12,9 +12,9 @@ const Hero: React.FC = () => {
         Discover and explore the latest AI tools to enhance your productivity and creativity.
       </p>
       <div className="flex justify-center gap-4">
-        <Button asChild size="lg">
-          <Link href="/tools">Explore Tools</Link>
-        </Button>
+      <Button asChild size="lg">
+  <Link href="/tools">Explore AI Tools</Link>
+</Button>
         <Button asChild size="lg" variant="outline">
           <Link href="/submit">Submit a Tool</Link>
         </Button>
