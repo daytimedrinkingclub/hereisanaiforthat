@@ -2,10 +2,15 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDownIcon, ChevronLeftIcon } from 'lucide-react'
+import { ChevronLeftIcon } from 'lucide-react'
 import Link from 'next/link'
+import { submitTool } from '@/utils/supabase/supabaseOperations'
+import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 export default function SubmitToolPage() {
+  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -20,8 +25,16 @@ export default function SubmitToolPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // TODO: Implement form submission logic
-    console.log('Form submitted:', formData)
+    setIsLoading(true)
+    try {
+      await submitTool(formData)
+      toast.success('Tool submitted successfully!')
+      router.push('/')
+    } catch (error) {
+      console.error('Error submitting tool:', error)
+      toast.error('Failed to submit tool. Please try again.')
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -104,9 +117,10 @@ export default function SubmitToolPage() {
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
             type="submit"
-            className="w-full bg-[#3a4257] text-white font-bold py-3 px-6 rounded-md text-lg shadow-lg transition duration-300"
+            disabled={isLoading}
+            className={`w-full bg-[#3a4257] text-white font-bold py-3 px-6 rounded-md text-lg shadow-lg transition duration-300 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
-            Submit Tool
+            {isLoading ? 'Submitting...' : 'Submit Tool'}
           </motion.button>
         </form>
       </motion.div>

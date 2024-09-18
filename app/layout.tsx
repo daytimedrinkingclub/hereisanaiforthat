@@ -2,7 +2,7 @@ import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
-
+import { Toaster } from "@/components/ui/sonner"
 export const metadata = {
   title: "Here's an AI for That - AI Tools Directory",
   description: "Discover and explore the latest AI tools to enhance your productivity and creativity",
@@ -27,6 +27,7 @@ export default function RootLayout({
                 {children}
               </div>
             </main>
+            <Toaster />
           </div>
         </div>
       </body>
