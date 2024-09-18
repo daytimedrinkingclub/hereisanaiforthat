@@ -45,7 +45,7 @@ export default function SubmitToolPage() {
         transition={{ duration: 0.5 }}
         className="bg-[#252b3d] rounded-lg shadow-2xl p-8 w-full max-w-2xl text-white relative"
       >
-        <Link href="/" passHref>
+        <Link href="/home" passHref>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

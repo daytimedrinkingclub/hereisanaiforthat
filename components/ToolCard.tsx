@@ -55,27 +55,27 @@ export default function ToolCard({ tool }: { tool: Tool }) {
         onClick={handleClick}
         className="cursor-pointer"
       >
-        <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg p-6 rounded-2xl shadow-xl border border-white border-opacity-20">
+        <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg p-4 md:p-6 rounded-2xl shadow-xl border border-white border-opacity-20">
           <div className="flex items-center mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4 shadow-lg">
+            <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-lg md:text-xl mr-3 md:mr-4 shadow-lg">
               {tool.name[0]}
             </div>
-            <h3 className="text-xl font-semibold text-white">{tool.name}</h3>
+            <h3 className="text-lg md:text-xl font-semibold text-white">{tool.name}</h3>
           </div>
-          <p className="text-gray-300 text-sm mb-4 line-clamp-2">
+          <p className="text-gray-300 text-xs md:text-sm mb-4 line-clamp-2">
             {tool.description}
           </p>
-          <div className="flex justify-between items-center text-sm">
-            <Badge variant="outline" className="bg-opacity-20 text-emerald-400 border-emerald-400">
+          <div className="flex flex-wrap justify-between items-center text-xs md:text-sm">
+            <Badge variant="outline" className="bg-opacity-20 text-emerald-400 border-emerald-400 mb-2 md:mb-0">
               {tool.category.length > 14 ? `${tool.category.slice(0, 14)}..` : tool.category}
             </Badge>
             <div className="flex items-center space-x-4 text-gray-300">
               <div className="flex items-center">
-                <Eye size={16} className="mr-1" />
+                <Eye size={14} className="mr-1" />
                 <span>{tool.views || 0}</span>
               </div>
               <div className="flex items-center">
-                <Star size={16} className="mr-1 text-yellow-400" />
+                <Star size={14} className="mr-1 text-yellow-400" />
                 <span>{tool.rating?.toFixed(1) || 'N/A'}</span>
               </div>
             </div>
