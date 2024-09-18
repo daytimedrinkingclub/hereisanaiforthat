@@ -4,7 +4,7 @@ import { Bell, User } from 'lucide-react';
 export default function Header() {
   return (
     <header className="bg-[#24283b] p-4 flex justify-between items-center">
-      <h1 className="text-2xl font-bold">THERE'S AN AI FOR THAT</h1>
+      <h1 className="text-2xl font-bold">HERE'S AN AI FOR THAT</h1>
       <div className="flex items-center space-x-4">
         <Bell size={20} className="text-gray-400 cursor-pointer hover:text-white transition-colors" />
         <Link href="/profile">
