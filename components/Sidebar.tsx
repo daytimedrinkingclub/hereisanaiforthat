@@ -6,13 +6,13 @@ import { Home, Search, Plane, Star, Users, CheckSquare, PlusSquare, Phone } from
 
 const sidebarLinks = [
   { icon: Home, text: 'Home', href: '/', color: 'text-blue-400' },
-  { icon: Search, text: 'Search', href: '/dashboard/search', color: 'text-green-400' },
-  { icon: Plane, text: 'Just launched', href: '/dashboard/just-launched', color: 'text-yellow-400' },
-  { icon: Star, text: 'Featured', href: '/dashboard/featured', color: 'text-purple-400' },
-  { icon: Users, text: 'Popular', href: '/dashboard/popular', color: 'text-pink-400' },
-  { icon: CheckSquare, text: 'Tasks', href: '/dashboard/tasks', color: 'text-indigo-400' },
-  { icon: PlusSquare, text: 'Submit / Advertise', href: '/dashboard/submit', color: 'text-red-400' },
-  { icon: Phone, text: 'Contact us', href: '/dashboard/contact', color: 'text-teal-400' },
+  { icon: Search, text: 'Search', href: '/', color: 'text-green-400' },
+//   { icon: Plane, text: 'Just launched', href: '/dashboard/just-launched', color: 'text-yellow-400' },
+//   { icon: Star, text: 'Featured', href: '/dashboard/featured', color: 'text-purple-400' },
+//   { icon: Users, text: 'Popular', href: '/dashboard/popular', color: 'text-pink-400' },
+//   { icon: CheckSquare, text: 'Tasks', href: '/dashboard/tasks', color: 'text-indigo-400' },
+//   { icon: PlusSquare, text: 'Submit / Advertise', href: '/dashboard/submit', color: 'text-red-400' },
+//   { icon: Phone, text: 'Contact us', href: '/dashboard/contact', color: 'text-teal-400' },
 ];
 
 export default function Sidebar() {
