@@ -1,17 +1,10 @@
-
-import { ThemeSwitcher } from "@/components/theme-switcher";
 import { GeistSans } from "geist/font/sans";
-import { ThemeProvider } from "next-themes";
-import Link from "next/link";
 import "./globals.css";
-
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
+import Sidebar from "@/components/Sidebar";
+import Header from "@/components/Header";
 
 export const metadata = {
-  metadataBase: new URL(defaultUrl),
-  title: "Here is an AI for That - AI Tools Dictionary",
+  title: "Here's an AI for That - AI Tools Directory",
   description: "Discover and explore the latest AI tools to enhance your productivity and creativity",
 };
 
@@ -21,21 +14,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={GeistSans.className} suppressHydrationWarning>
-      <body className="bg-background text-foreground">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="flex flex-col min-h-screen">
-            <main className="flex-grow">
-              {children}
+    <html lang="en" className={GeistSans.className}>
+      <body className="bg-[#1a1b26] text-white">
+        <div className="flex flex-col min-h-screen">
+          <div className="sticky top-0 z-10">
+            <Header />
+          </div>
+          <div className="flex flex-1">
+            <Sidebar />
+            <main className="flex-1 overflow-y-auto p-6 ml-16">
+              <div className="container mx-auto">
+                {children}
+              </div>
             </main>
-          {/* <ThemeSwitcher /> */}
-             </div>
-        </ThemeProvider>
+          </div>
+        </div>
       </body>
     </html>
   );

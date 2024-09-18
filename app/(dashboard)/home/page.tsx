@@ -1,6 +1,8 @@
+import { Suspense } from 'react';
 import { createClient } from "@/utils/supabase/server";
 import ToolCard from "@/components/ToolCard";
 import SearchBar from "@/components/SearchBar";
+import Loading from "@/components/Loading";
 
 export default async function ToolsDirectory({
   searchParams,
@@ -30,11 +32,13 @@ export default async function ToolsDirectory({
       <div className="mb-6">
         <SearchBar initialSearch={searchParams.search} />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-        {tools.map((tool) => (
-          <ToolCard key={tool.id} tool={tool} />
-        ))}
-      </div>
+      <Suspense fallback={<Loading />}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+          {tools.map((tool) => (
+            <ToolCard key={tool.id} tool={tool} />
+          ))}
+        </div>
+      </Suspense>
     </div>
   );
 }

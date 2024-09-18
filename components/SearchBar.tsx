@@ -1,33 +1,36 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Search } from "lucide-react";
+import { useDebounce } from "@/hooks/useDebounce";
 
 export default function SearchBar({ initialSearch = "" }) {
   const [search, setSearch] = useState(initialSearch);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const debouncedSearch = useDebounce(search, 300);
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (search) {
-      router.push(`/tools?search=${encodeURIComponent(search)}`);
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    if (debouncedSearch) {
+      params.set("search", debouncedSearch);
     } else {
-      router.push("/tools");
+      params.delete("search");
     }
-  };
+    router.push(`/home?${params.toString()}`);
+  }, [debouncedSearch, router, searchParams]);
 
   return (
-    <form onSubmit={handleSearch} className="flex gap-2">
+    <div className="relative w-full max-w-2xl mx-auto">
       <input
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search tools by name, category, or description..."
-        className="flex-grow p-2 border rounded"
+        placeholder="Find AIs using AI"
+        className="w-full p-3 pl-10 bg-[#2a2d3e] rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <button type="submit" className="px-4 py-2 bg-primary text-white rounded">
-        Search
-      </button>
-    </form>
+      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+    </div>
   );
 }
