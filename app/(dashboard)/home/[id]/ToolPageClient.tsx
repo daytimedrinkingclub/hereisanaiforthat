@@ -5,6 +5,10 @@ import Link from "next/link";
 import { Eye, Star, ExternalLink, ArrowLeft } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ReviewForm } from '@/components/ReviewForm';
+import { useUser } from '@/hooks/useUser';
+import { getReviewsForTool } from '@/utils/supabase/supabaseOperations';
+import { useEffect, useState } from 'react';
 
 interface Tool {
   id: number;
@@ -16,8 +20,27 @@ interface Tool {
   rating?: number;
 }
 
+interface Review {
+  id: number; 
+  rating: number;
+  comment: string;
+  user_email: string;
+}
+
 export default function ToolPageClient({ tool }: { tool: Tool }) {
   const router = useRouter();
+  const { user } = useUser();
+  const [reviews, setReviews] = useState<Review[]>([]); // Specify the type for reviews
+
+  useEffect(() => {
+    async function fetchReviews() {
+      console.log('Fetching reviews for tool:', tool.id);
+      const fetchedReviews = await getReviewsForTool(tool.id);
+      console.log('Fetched reviews:', fetchedReviews);
+      setReviews(fetchedReviews);
+    }
+    fetchReviews();
+  }, [tool.id]);
 
   return (
     <div className="max-w-4xl mx-auto p-8 bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-2xl shadow-xl border border-white border-opacity-20">
@@ -62,6 +85,19 @@ export default function ToolPageClient({ tool }: { tool: Tool }) {
           <ExternalLink size={18} className="ml-2" />
         </Link>
       </Button>
+      {user && <ReviewForm toolId={tool.id} />} 
+      <div className="mt-8">
+        <h2 className="text-2xl font-bold">Reviews</h2>
+        {reviews.map((review) => (
+          <div key={review.id} className="border p-4 my-2 rounded">
+            <p>Rating: {review.rating}/5</p>
+            <p>{review.comment}</p>
+            <p className="text-sm text-gray-500">
+              By: {review.user_email || 'Anonymous'}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
