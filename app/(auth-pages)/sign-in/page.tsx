@@ -17,7 +17,12 @@ export default function Login({ searchParams }: { searchParams: Message }) {
       </p>
       <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">
         <Label htmlFor="email">Email</Label>
-        <Input name="email" placeholder="you@example.com" required />
+        <Input 
+          name="email" 
+          placeholder="you@example.com" 
+          required 
+          className="border border-gray-300 rounded-md p-2 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+        />
         <div className="flex justify-between items-center">
           <Label htmlFor="password">Password</Label>
           <Link
@@ -32,6 +37,7 @@ export default function Login({ searchParams }: { searchParams: Message }) {
           name="password"
           placeholder="Your password"
           required
+          className="border border-gray-300 rounded-md p-2 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" 
         />
         <Button type="submit" formAction={signInAction}>
           Sign in
