@@ -39,7 +39,7 @@ export default function Login({ searchParams }: { searchParams: Message }) {
           required
           className="border border-gray-300 rounded-md p-2 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" 
         />
-        <Button type="submit" formAction={signInAction}>
+        <Button type="submit" formAction={signInAction} className="bg-blue-600 text-white hover:bg-blue-100 transition-colors duration-200 hover:bg-transparent">
           Sign in
         </Button>
         <FormMessage message={searchParams} />

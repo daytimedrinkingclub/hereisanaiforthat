@@ -37,7 +37,7 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
             minLength={6}
             required
           />
-          <Button type="submit" formAction={signUpAction}>
+          <Button type="submit" formAction={signUpAction} className="bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200">
             Sign up
           </Button>
           <FormMessage message={searchParams} />

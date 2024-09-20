@@ -59,10 +59,10 @@ export default function Header() {
         ) : (
           <div className="flex space-x-2">
             <Link href="/sign-in">
-              <Button variant="ghost" className="text-gray-200 hover:text-white">Login</Button>
+              <Button variant="ghost" className="text-white hover:bg-purple-700">Login</Button>
             </Link>
             <Link href="/sign-up">
-              <Button variant="outline" className="text-gray-200 hover:text-white">Sign up</Button>
+              <Button variant="default" className="text-white hover:bg-purple-700">Sign up</Button>
             </Link>
           </div>
         )}
